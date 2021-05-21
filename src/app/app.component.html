@@ -1,1 +1,4 @@
-<span>Привет, {{name}}</span>
+<app-child [title]="title" [userName]="name" [userAge]="age"></app-child>
+<input type="text" [(ngModel)]="name"/>
+<br>
+<input type="number" [(ngModel)]="age"/>

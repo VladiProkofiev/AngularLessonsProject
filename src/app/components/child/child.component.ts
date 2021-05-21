@@ -1,13 +1,43 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-child',
-  template: `<ng-content></ng-content>
-  <h3>{{title}}</h3>`,
+  templateUrl: './child.component.html',
   styleUrls: ['./child.component.css']
 })
 export class ChildComponent implements OnInit {
-title = 'Рады вас видеть'
+  @Input() title: string = '';
+  @Input() _userName: string = '';
+  @Input() _userAge: number = 0;
+    @Input() 
+    set userName(name: string) {
+      if(name.length < 2) {
+        alert('Некорректное имя')
+      }
+      else {
+        this._userName = name;
+      }
+    }
+    get userName() {
+      return this._userName;
+    }
+
+    @Input() 
+    set userAge(age: number) {
+      if(age < 18) {
+        alert('Вы слишком молоды для данного сервиса');
+      }
+      else if(age > 100) {
+        alert('Вы уверены,что ввели возраст правильно?')
+      }
+      else {
+        this._userAge = age;
+      }
+    }
+    get userAge() {
+      return this._userAge;
+    }
+
   constructor() { }
 
   ngOnInit(): void {
