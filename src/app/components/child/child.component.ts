@@ -57,6 +57,14 @@ export class ChildComponent implements OnInit {
     increment() {this.counter++};
     decrement() {this.counter--};
 
+  hidenTitle: boolean = false;
+
+  toggle() {
+    this.hidenTitle = !this.hidenTitle;
+  };
+
+  
+
   ngOnInit() {
        
     console.log(`ngOnInit`);
