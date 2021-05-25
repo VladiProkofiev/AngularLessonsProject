@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, ContentChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -43,9 +43,47 @@ export class ChildComponent implements OnInit {
       this._userName = model;
       this.userNameChange.emit(model);
     }
+
+    @ContentChild("headerContent", {static: false})
+    header: ElementRef | undefined
+    change() { 
+      if(this.header !==undefined){
+          this.header.nativeElement.textContent = "Подтверждено"; 
+      }
+  }
   constructor() { }
 
-  ngOnInit(): void {
+  counter: number = 0;
+    increment() {this.counter++};
+    decrement() {this.counter--};
+
+  ngOnInit() {
+       
+    console.log(`ngOnInit`);
+  }
+  ngOnChanges() {
+     
+    console.log(`OnChanges`);
+  }
+  ngDoCheck() {
+     
+    console.log(`ngDoCheck`);
+  }
+  ngAfterViewInit() {
+     
+    console.log(`ngAfterViewInit`);
+  }
+  ngAfterViewChecked() {
+     
+    console.log(`ngAfterViewChecked`);
+  }
+  ngAfterContentInit() {
+     
+    console.log(`ngAfterContentInit`);
+  }
+  ngAfterContentChecked() {
+     
+    console.log(`ngAfterContentChecked`);
   }
 
 }

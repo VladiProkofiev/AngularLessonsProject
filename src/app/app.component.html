@@ -1,3 +1,11 @@
-<app-child [title]="title" [(userName)]="name" [userAge]="age"></app-child>
+<app-child [title]="title" [(userName)]="name" [userAge]="age" #counter>
+    <h3 #headerContent>Добро пожаловать, {{name}}</h3>
+</app-child>
+<button (click)="counter.increment()">+</button>
+<button (click)="counter.decrement()">-</button>
 <br>
 <input type="number" [(ngModel)]="age"/>
+<div>
+    <h1>Сообщение из главного компонента</h1>
+    <app-data></app-data>
+</div>

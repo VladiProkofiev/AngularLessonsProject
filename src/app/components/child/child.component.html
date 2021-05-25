@@ -2,3 +2,6 @@
 <p>Имя пользователя: {{userName}}</p>
 <p>Возраст: {{userAge}}</p>
 <input [ngModel]="userName" (ngModelChange)="onNameChange($event)" />
+<p>Выберите число от 1 до 10: {{counter}}</p>
+<ng-content></ng-content>
+<button (click)="change()">Подтвердить</button>
