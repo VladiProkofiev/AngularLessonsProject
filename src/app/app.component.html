@@ -9,7 +9,7 @@
     <h1>Сообщение из главного компонента</h1>
     <app-data></app-data>
 </div>
-<ul *ngIf="confirmation">
+<ul *ifRules="confirmation">
     <li *ngFor="let rule of rules">{{rule}}</li>
 </ul>
 <button (click)="toggle()">Посмотреть правила</button>
