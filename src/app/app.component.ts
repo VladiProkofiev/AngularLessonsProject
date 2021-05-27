@@ -1,13 +1,14 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChildComponent } from './components/child/child.component';
+import { DataService } from './data.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  
+  providers: [DataService],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title: string = 'Форма авторизации';
   name: string = 'Пользователь';
   age: number = 18;
@@ -17,9 +18,16 @@ export class AppComponent {
     "Правило №3",
     "Правило №4",
     "Правило №5",
-  ]
+  ];
+  items: string[] = [];
+  nameOfEnthusiasm: string = "";
+  confirmation: boolean = false;
 
-confirmation: boolean = false;
+constructor(private dataService: DataService) {}
+
+addItem(nameOfEnthusiasm: string) {
+  this.dataService.addData(nameOfEnthusiasm);
+}
 
 toggle() {
 this.confirmation = !this.confirmation;
@@ -29,4 +37,9 @@ this.confirmation = !this.confirmation;
   private counterComponent: ChildComponent | undefined
 increment() {this.counterComponent?.increment()};
 decrement() {this.counterComponent?.decrement()};
+
+ngOnInit() {
+this.items = this.dataService.getData();
+}
+
 }
