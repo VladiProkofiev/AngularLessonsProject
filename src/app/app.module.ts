@@ -6,12 +6,14 @@ import { ChildComponent } from './components/child/child.component';
 import { DataModule } from './data/data.module';
 import { BoldDirective } from './bold.directive';
 import { IfRulesDirective } from './if-rules.directive';
+import { DataComponent } from './data/data.component';
 @NgModule({
   declarations: [
     AppComponent,
     ChildComponent,
     BoldDirective,
-    IfRulesDirective
+    IfRulesDirective,
+    DataComponent,
   ],
   imports: [
     BrowserModule,

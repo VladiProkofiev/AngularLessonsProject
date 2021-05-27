@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
+import { LogService } from './log.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  constructor() { }
+  constructor(@Optional() private logService: LogService) { }
 
 private data: string[] = [
   "Просмотр фильмов",
@@ -13,11 +14,13 @@ private data: string[] = [
 ];
 
 getData(): string[] {
-  return this.data
+  this.logService.getMessage("Получение данных");
+  return this.data;
 };
 
 addData(enthusiasm: string) {
-  this.data.push(enthusiasm)
+  this.data.push(enthusiasm);
+  this.logService.getMessage("Добавление данных")
 };
 
 }

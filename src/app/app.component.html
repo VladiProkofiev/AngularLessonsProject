@@ -5,22 +5,8 @@
 <button (click)="counter.decrement()">-</button>
 <br>
 <input type="number" [(ngModel)]="age"/>
-<div>
-    <h1>Сообщение из главного компонента</h1>
-    <app-data></app-data>
-</div>
 <ul *ifRules="confirmation">
     <li *ngFor="let rule of rules">{{rule}}</li>
 </ul>
 <button (click)="toggle()">Посмотреть правила</button>
-<div>
-    <div>
-        <input [(ngModel)] = "nameOfEnthusiasm" placeholder="Увлечения">
-        <button (click)="addItem(nameOfEnthusiasm)">Добавить</button>
-    </div>
-    <table>
-        <tr *ngFor="let item of items">
-            <td>{{item}}</td>
-        </tr>
-    </table>
-</div>
+<app-data></app-data>
