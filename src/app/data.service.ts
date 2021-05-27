@@ -8,10 +8,7 @@ export class DataService {
 
   constructor(@Optional() private logService: LogService) { }
 
-private data: string[] = [
-  "Просмотр фильмов",
-  "Прогулки на свежем воздухе",
-];
+private data: string[] = [];
 
 getData(): string[] {
   this.logService.getMessage("Получение данных");
@@ -20,7 +17,11 @@ getData(): string[] {
 
 addData(enthusiasm: string) {
   this.data.push(enthusiasm);
-  this.logService.getMessage("Добавление данных")
+  this.logService.getMessage("Добавление данных");
 };
+removeData() {
+  this.data.pop();
+  this.logService.getMessage("Удаление данных")
 
+}
 }

@@ -8,6 +8,7 @@ import { LogService } from "../log.service";
     <div>
         <input [(ngModel)] = "nameOfEnthusiasm" placeholder="Увлечения">
         <button (click)="addItem(nameOfEnthusiasm)">Добавить</button>
+        <button (click)="removeItem()">Удалить</button>
     </div>
     <table>
         <tr *ngFor="let item of items">
@@ -26,6 +27,11 @@ constructor(private dataService: DataService) {}
 addItem(nameOfEnthusiasm: string) {
   this.dataService.addData(nameOfEnthusiasm);
 }
+
+removeItem() {
+    this.dataService.removeData();
+}
+
 ngOnInit() {
     this.items = this.dataService.getData();
     }

@@ -1,9 +1,0 @@
-<p [ngClass] = "{hide: hidenTitle}">{{title}}</p>
-<p [ngClass] = "{greenColor: true}">Имя пользователя: {{userName}}</p>
-<p [ngStyle] = "{'font-size': '20px', 'color': 'red'}">Возраст: {{userAge}}</p>
-<input [ngModel]="userName" (ngModelChange)="onNameChange($event)" />
-<p selectSize = "25px" [defaultSize] = "'12px'" appBold>Выберите число от 1 до 10: {{counter}}</p>
-<p *ngIf="counter > 10">Число должно быть меньше 10!</p>
-<ng-content></ng-content>
-<button (click)="change()">Подтвердить</button>
-<button (click)="toggle()">Скрыть/показать заголовок</button>

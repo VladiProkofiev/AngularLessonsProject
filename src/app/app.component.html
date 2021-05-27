@@ -1,12 +1,39 @@
-<app-child [title]="title" [(userName)]="name" [userAge]="age" #counter>
-    <h3 #headerContent>Добро пожаловать, {{name}}</h3>
-</app-child>
-<button (click)="counter.increment()">+</button>
-<button (click)="counter.decrement()">-</button>
-<br>
-<input type="number" [(ngModel)]="age"/>
-<ul *ifRules="confirmation">
-    <li *ngFor="let rule of rules">{{rule}}</li>
-</ul>
-<button (click)="toggle()">Посмотреть правила</button>
-<app-data></app-data>
+<div class="form-wrapper">
+    <div class="form-group">
+        <label>Имя</label>
+        <input class="form-control" name="userFirstName" [(ngModel)]="userFirstName">
+    </div>
+    <div class="form-group">
+        <label>Фамилия</label>
+        <input class="form-control" name="userSecondName" [(ngModel)]="userSecondName">
+    </div>
+    <div class="form-group">
+        <label>Возраст</label>
+        <input class="form-control" type="number" name="userAge" [(ngModel)]="userAge">
+    </div>
+    <div class="form-group">
+        <label>Пол</label>
+        <select class="form-control" name="userSex" [(ngModel)]="userSex">
+            <option *ngFor="let sex of userSex" [value]="sex">
+                {{sex}}
+            </option>
+        </select>
+    </div>
+    <ul *ifRules="confirmationRules">
+        <li *ngFor="let rule of rules">{{rule}}</li>
+    </ul>
+    <button (click)="toggleRules()">Посмотреть правила</button>
+    <app-data></app-data>
+    <button (click)="confirmForm()">Подтвердить форму</button>
+</div>
+<div *ngIf="confirmationForm">
+    <h3>Данные формы</h3>
+    <table *ngFor="let p of userForms">
+        <td>{{p.userFirstName}}</td>
+        <td>{{p.userSecondName}}</td>
+        <td>{{p.userAge}}</td>
+        <td>{{p.userSex}}</td>
+        <td>{{p.nameOfEnthusiasm}}</td>
+
+    </table>
+</div>
