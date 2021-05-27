@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChildComponent } from './components/child/child.component';
 import { DataService } from './data.service';
+import { LogService } from './log.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [DataService],
+  providers: [DataService, LogService],
 })
 export class AppComponent implements OnInit {
   title: string = 'Форма авторизации';
@@ -23,10 +24,11 @@ export class AppComponent implements OnInit {
   nameOfEnthusiasm: string = "";
   confirmation: boolean = false;
 
-constructor(private dataService: DataService) {}
+constructor(private dataService: DataService, private logService: LogService) {}
 
 addItem(nameOfEnthusiasm: string) {
   this.dataService.addData(nameOfEnthusiasm);
+  this.logService.getMessage("Добавление данных")
 }
 
 toggle() {
@@ -40,6 +42,7 @@ decrement() {this.counterComponent?.decrement()};
 
 ngOnInit() {
 this.items = this.dataService.getData();
+this.logService.getMessage("Получение данных")
 }
 
 }
